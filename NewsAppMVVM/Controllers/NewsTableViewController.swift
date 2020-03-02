@@ -17,14 +17,7 @@ class NewsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let barBgColor = UIColor(displayP3Red: 162/255, green: 155/255, blue: 254/255, alpha: 1.0)
-        if let navBar = self.navigationController?.navigationBar {
-            navBar.prefersLargeTitles = true
-            navBar.backgroundColor = barBgColor
-            navBar.barTintColor = barBgColor
-            navBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-            navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        }
+        colorTheBar()
         populateNews()
     }
     
@@ -48,6 +41,22 @@ class NewsTableViewController: UITableViewController {
                 }
                 
             }).disposed(by: disposeBag)
+    }
+    
+    private func colorTheBar() {
+        let barBgColor = UIColor(displayP3Red: 162/255, green: 155/255, blue: 254/255, alpha: 1.0)
+        if let navBar = self.navigationController?.navigationBar {
+            navBar.prefersLargeTitles = true
+            navBar.backgroundColor = barBgColor
+            navBar.barTintColor = barBgColor
+            navBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            
+            let statusBar = UIView()
+            statusBar.frame = UIApplication.shared.statusBarFrame
+            statusBar.backgroundColor = barBgColor
+            UIApplication.shared.keyWindow?.addSubview(statusBar)
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
