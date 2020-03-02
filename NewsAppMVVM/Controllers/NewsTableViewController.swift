@@ -8,8 +8,11 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class NewsTableViewController: UITableViewController {
+    
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,5 +24,15 @@ class NewsTableViewController: UITableViewController {
             navBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
             navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         }
+        populateNews()
+    }
+    
+    private func populateNews() {
+        let resource = Resource<ArticleResponse>(url: URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=f518f4ad180548899e63f85a326e37dd")!)
+        
+        URLRequest.load(resource: resource)
+            .subscribe(onNext: {
+                print($0)
+            }).disposed(by: disposeBag)
     }
 }
