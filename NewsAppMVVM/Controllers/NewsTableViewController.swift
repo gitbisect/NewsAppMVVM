@@ -17,6 +17,7 @@ class NewsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("view did load now")
         colorTheBar()
         populateNews()
     }

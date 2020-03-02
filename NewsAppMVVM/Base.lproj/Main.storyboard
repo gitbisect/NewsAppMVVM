@@ -48,8 +48,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="descriptionLabel" destination="PJn-YC-TIg" id="gH6-e4-NmX"/>
-                                    <outlet property="titleLabel" destination="0t1-Ib-H6m" id="G7z-i0-uoZ"/>
+                                    <outlet property="descriptionLabel" destination="PJn-YC-TIg" id="qsJ-YN-zpN"/>
+                                    <outlet property="titleLabel" destination="0t1-Ib-H6m" id="Yov-Ea-bhZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
